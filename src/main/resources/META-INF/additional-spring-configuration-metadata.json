@@ -1,0 +1,24 @@
+{
+  "properties": [
+    {
+      "name": "server.protocol",
+      "type": "java.lang.String",
+      "description": "A description for 'server.protocol'"
+    },
+    {
+      "name": "rest.validate_gtoken",
+      "type": "java.lang.String",
+      "description": "A description for 'rest.validate_gtoken'"
+    },
+    {
+      "name": "rest.g_user",
+      "type": "java.lang.String",
+      "description": "A description for 'rest.g_user'"
+    },
+    {
+      "name": "max_users.workshop",
+      "type": "java.lang.String",
+      "description": "A description for 'max_users.workshop'"
+    }
+  ]
+}

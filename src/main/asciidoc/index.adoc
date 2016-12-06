@@ -1,0 +1,508 @@
+= RESTful Proveng API
+:hardbreaks:
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+
+
+[[overview]]
+= Overview
+
+[[overview-http-verbs]]
+== HTTP verbs
+
+Proveng API tries to adhere as closely as possible to standard HTTP and REST conventions in its use of HTTP verbs.
+
+|===
+| Verb | Usage
+
+| `GET`
+| Used to retrieve a resource
+
+| `POST`
+| Used to create a new resource
+
+| `PUT`
+| Used to update an existing resource, including partial updates
+
+| `DELETE`
+| Used to delete an existing resource
+|===
+
+Proveng Api tries to adhere as closely as possible to standard HTTP and REST conventions in its use of HTTP status codes.
+
+|===
+| Status code | Usage
+
+| `200 OK`
+| The request completed successfully
+
+| `201 Created`
+| A new resource has been created successfully. 
+
+
+| `204 No Content`
+| An update to an existing resource has been applied successfully
+
+| `400 Bad Request`
+| The request was malformed. The response body will include an error providing further information
+
+| `404 Not Found`
+| The requested resource did not exist
+|===
+
+[[resources-get-event]]
+== GET event (../rest/../event)
+
+A `GET` request for info about event.
+
+=== Headers structure
+
+include::{snippets}/getEvent/request-headers.adoc[]
+
+=== Request parameters structure
+
+include::{snippets}/getEvent/request-parameters.adoc[]
+
+=== Response structure
+
+include::{snippets}/getEvent/response-fields.adoc[]
+
+=== Example request
+
+include::{snippets}/getEvent/http-request.adoc[]
+
+=== Example response
+
+include::{snippets}/getEvent/http-response.adoc[]
+
+[[resources-get-events]]
+== GET events (../rest/../events)
+
+A `GET` request for info about event.
+
+=== Headers structure
+
+include::{snippets}/getEvents/request-headers.adoc[]
+
+=== Request parameters structure
+
+include::{snippets}/getEvents/request-parameters.adoc[]
+
+=== Response structure
+
+include::{snippets}/getEvents/response-fields.adoc[]
+
+=== Example request
+
+include::{snippets}/getEvents/http-request.adoc[]
+
+=== Example response
+
+include::{snippets}/getEvents/http-response.adoc[]
+
+[[resources-post-event]]
+== POST event (../rest/../eventAccepted)
+
+A `POST` request for create event.
+
+=== Headers structure
+
+include::{snippets}/eventAccepted/request-headers.adoc[]
+
+=== Request parameters structure
+
+include::{snippets}/eventAccepted/request-parameters.adoc[]
+
+=== Response structure
+
+include::{snippets}/eventAccepted/response-fields.adoc[]
+
+=== Example request
+
+include::{snippets}/eventAccepted/http-request.adoc[]
+
+=== Example response
+
+include::{snippets}/eventAccepted/http-response.adoc[]
+
+[[resources-get-group]]
+== GET group
+ 
+A `GET` request for info about group.
+
+ User with roles "Admin" or "Teacher" is allowed to see any group.  
+ Others can see only his main group or any not main group(group for workshop, etc.)
+
+=== Headers structure
+
+include::{snippets}/getGroup/request-headers.adoc[] 
+
+=== Request parameters structure
+
+include::{snippets}/getGroup/request-parameters.adoc[]
+
+=== Response structure
+ 
+include::{snippets}/getGroup/response-fields.adoc[]
+ 
+=== Example request
+ 
+include::{snippets}/getGroup/http-request.adoc[]
+
+=== Example response
+ 
+include::{snippets}/getGroup/http-response.adoc[]
+
+[[resources-get-groups]]
+== GET groups
+ 
+A `GET` request for info about all groups for user.
+
+  User with role "Teacher" can see all groups he's created. 
+  User with role "Student" can see only groups he's participating in.
+
+=== Headers structure
+
+include::{snippets}/getGroups/request-headers.adoc[] 
+
+=== Response structure
+ 
+include::{snippets}/getGroups/response-fields.adoc[]
+ 
+=== Example request
+ 
+include::{snippets}/getGroups/http-request.adoc[]
+
+=== Example response
+ 
+include::{snippets}/getGroups/http-response.adoc[]
+
+[[resources-delete-group]]
+== DELETE group
+ 
+A `DELETE` request for deleting group.
+
+=== Headers structure
+
+include::{snippets}/deleteGroup/request-headers.adoc[] 
+
+=== Request parameters structure
+
+include::{snippets}/deleteGroup/request-parameters.adoc[]
+
+=== Response structure
+ 
+include::{snippets}/deleteGroup/response-fields.adoc[]
+ 
+=== Example request
+ 
+include::{snippets}/deleteGroup/http-request.adoc[]
+
+=== Example response
+ 
+include::{snippets}/deleteGroup/http-response.adoc[]
+
+[[resources-create-group]]
+== POST group
+ 
+A `POST` request for creating a group.
+
+=== Headers structure
+
+include::{snippets}/createGroup/request-headers.adoc[] 
+
+=== Request fields structure
+
+include::{snippets}/createGroup/request-fields.adoc[]
+
+=== Response structure
+ 
+include::{snippets}/createGroup/response-fields.adoc[]
+ 
+=== Example request
+ 
+include::{snippets}/createGroup/http-request.adoc[]
+
+=== Example response
+ 
+include::{snippets}/createGroup/http-response.adoc[]
+
+[[resources-update-group]]
+== PUT group
+ 
+A `PUT` request for updating a group.
+
+=== Headers structure
+
+include::{snippets}/updateGroup/request-headers.adoc[] 
+
+=== Request fields structure
+
+include::{snippets}/updateGroup/request-fields.adoc[]
+
+=== Response structure
+ 
+include::{snippets}/updateGroup/response-fields.adoc[]
+ 
+=== Example request
+ 
+include::{snippets}/updateGroup/http-request.adoc[]
+
+=== Example response
+ 
+include::{snippets}/updateGroup/http-response.adoc[]
+////
+[[resources-delete-group_user]]
+== DELETE group_user
+ 
+A `DELETE` request to delete a user from group by some reason
+
+=== Headers structure
+
+include::{snippets}/deleteGroupUser/request-headers.adoc[] 
+
+=== Request parameters structure
+
+include::{snippets}/deleteGroupUser/request-parameters.adoc[]
+
+=== Response structure
+ 
+include::{snippets}/deleteGroupUser/response-fields.adoc[]
+ 
+=== Example request
+ 
+include::{snippets}/deleteGroupUser/http-request.adoc[]
+
+=== Example response
+ 
+include::{snippets}/deleteGroupUser/http-response.adoc[]
+////
+[[resources-delete-group_users]]
+
+== DELETE group_users
+ 
+A `DELETE` request to delete some users from group by some reasons
+
+=== Headers structure
+
+include::{snippets}/deleteUsersFromGroup/request-headers.adoc[] 
+
+=== Request parameters structure
+
+include::{snippets}/deleteUsersFromGroup/request-parameters.adoc[]
+
+=== Response structure
+ 
+include::{snippets}/deleteUsersFromGroup/response-fields.adoc[]
+ 
+=== Example request
+ 
+include::{snippets}/deleteUsersFromGroup/http-request.adoc[]
+
+=== Example response
+ 
+include::{snippets}/deleteUsersFromGroup/http-response.adoc[]
+
+[[resources-create-schedule]]
+== POST schedule (../rest/../schedule)
+
+A `POST` request for creating a schedule.
+
+=== Headers structure
+
+include::{snippets}/postSchedule/request-headers.adoc[]
+
+=== Request parameters structure
+
+include::{snippets}/postSchedule/request-parameters.adoc[]
+
+=== Response structure
+
+include::{snippets}/postSchedule/response-fields.adoc[]
+
+=== Example response
+
+include::{snippets}/postSchedule/http-response.adoc[]
+
+[[resources-get-schedule]]
+== GET schedule (../rest/../schedule)
+
+A `GET` request for info about schedule by group_id.
+
+=== Headers structure
+
+include::{snippets}/getSchedule/request-headers.adoc[]
+
+=== Request parameters structure
+
+include::{snippets}/getSchedule/request-parameters.adoc[]
+
+=== Response structure
+
+include::{snippets}/getSchedule/response-fields.adoc[]
+
+=== Example response
+
+include::{snippets}/getSchedule/http-response.adoc[]
+
+[[resources-get-tests]]
+== GET tests
+ 
+A `GET` request for  all tests, available for user
+
+=== Headers structure
+
+include::{snippets}/getTests/request-headers.adoc[] 
+
+=== Response structure
+ 
+include::{snippets}/getTests/response-fields.adoc[]
+ 
+=== Example request
+ 
+include::{snippets}/getTests/http-request.adoc[]
+
+=== Example response
+ 
+include::{snippets}/getTests/http-response.adoc[]
+
+[[resources-get-test]]
+== GET test
+ 
+A `GET` request for test by id
+
+=== Headers structure
+
+include::{snippets}/getTest/request-headers.adoc[] 
+
+=== Request parameters structure
+
+include::{snippets}/getTest/request-parameters.adoc[]
+
+=== Response structure
+ 
+include::{snippets}/getTest/response-fields.adoc[]
+ 
+=== Example request
+ 
+include::{snippets}/getTest/http-request.adoc[]
+
+=== Example response
+ 
+include::{snippets}/getTest/http-response.adoc[]
+
+[[resources-create-test]]
+== POST test
+ 
+A `POST` request for creating a test.
+
+=== Headers structure
+
+include::{snippets}/createTest/request-headers.adoc[] 
+
+=== Response structure
+ 
+include::{snippets}/createTest/response-fields.adoc[]
+ 
+=== Example request
+ 
+include::{snippets}/createTest/http-request.adoc[]
+
+=== Example response
+ 
+include::{snippets}/createTest/http-response.adoc[]
+
+[[resources-update-test]]
+== PUT test
+ 
+A `PUT` request for updating a test.
+
+=== Headers structure
+
+include::{snippets}/updateTest/request-headers.adoc[] 
+
+=== Response structure
+ 
+include::{snippets}/updateTest/response-fields.adoc[]
+ 
+=== Example request
+ 
+include::{snippets}/updateTest/http-request.adoc[]
+
+=== Example response
+ 
+include::{snippets}/updateTest/http-response.adoc[]
+
+[[resources-post-testResult]]
+== POST testResult
+ 
+A `POST` request for test results
+
+=== Headers structure
+
+include::{snippets}/createTestResult/request-headers.adoc[] 
+
+=== Request parameters structure
+
+include::{snippets}/createTestResult/request-parameters.adoc[]
+
+=== Response structure
+ 
+include::{snippets}/createTestResult/response-fields.adoc[]
+ 
+=== Example request
+ 
+include::{snippets}/createTestResult/http-request.adoc[]
+
+=== Example response
+ 
+include::{snippets}/createTestResult/http-response.adoc[]
+
+[[resources-get-materials]]
+== GET materials
+ 
+A `GET` request for  all materials, available for user
+
+=== Headers structure
+
+include::{snippets}/getMaterials/request-headers.adoc[] 
+
+=== Response structure
+ 
+include::{snippets}/getMaterials/response-fields.adoc[]
+ 
+=== Example request
+ 
+include::{snippets}/getMaterials/http-request.adoc[]
+
+=== Example response
+ 
+include::{snippets}/getMaterials/http-response.adoc[]
+
+[[resources-get-material]]
+== GET material
+ 
+A `GET` request for material by id
+
+=== Headers structure
+
+include::{snippets}/getMaterial/request-headers.adoc[] 
+
+=== Request parameters structure
+
+include::{snippets}/getMaterial/request-parameters.adoc[]
+
+=== Response structure
+ 
+include::{snippets}/getMaterial/response-fields.adoc[]
+ 
+=== Example request
+ 
+include::{snippets}/getMaterial/http-request.adoc[]
+
+=== Example response
+ 
+include::{snippets}/getMaterial/http-response.adoc[]

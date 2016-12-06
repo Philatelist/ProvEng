@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="60">
+    <Properties>
+        <Property name="log-path">applogs</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console-Appender" target="SYSTEM_OUT">
+            <PatternLayout>
+                <pattern>
+                    %d{ISO8601} [%-5p][%-16.16t][%32.32c] - %m%n
+                </pattern>>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </Console>
+        <RollingFile name="App-File-Appender" fileName="logs/app/app_log.log"
+                     filePattern="logs/app/app-%d{MM-yyyy}-%i.log.gz">
+            <!--filePattern="logs/app/app-%d{MM-dd-yyyy}-%i.log.gz">-->
+            <PatternLayout>
+                <pattern>
+                    %d{ISO8601} [%-5p][%-16.16t][%32.32c] - %m%n
+                </pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <RollingFile name="Controller-File-Appender" fileName="logs/controller/controller_log.log"
+                     filePattern="logs/controller/controller-%d{MM-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <pattern>
+                    %d{ISO8601} [%-5p][%-16.16t][%32.32c] - %m%n
+                </pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <RollingFile name="Domain-File-Appender" fileName="logs/domain/domain_log.log"
+                     filePattern="logs/domain/domain-%d{MM-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <pattern>
+                    %d{ISO8601} [%-5p][%-16.16t][%32.32c] - %m%n
+                </pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <RollingFile name="Repository-File-Appender" fileName="logs/repository/repository_log.log"
+                     filePattern="logs/repository/repository-%d{MM-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <pattern>
+                    %d{ISO8601} [%-5p][%-16.16t][%32.32c] - %m%n
+                </pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <RollingFile name="Service-File-Appender" fileName="logs/service/service_log.log"
+                     filePattern="logs/service/service-%d{MM-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <pattern>
+                    %d{ISO8601} [%-5p][%-16.16t][%32.32c] - %m%n
+                </pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <RollingFile name="Utils-File-Appender" fileName="logs/utils/utils_log.log"
+                     filePattern="logs/utils/utils-%d{MM-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <pattern>
+                    %d{ISO8601} [%-5p][%-16.16t][%32.32c] - %m%n
+                </pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <RollingFile name="SQL-File-Appender" fileName="logs/SQL/sql_log.log"
+                     filePattern="logs/SQL/sql-%d{MM-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <pattern>
+                    %d{ISO8601} [%-5p][%-16.16t][%32.32c] - %m%n
+                </pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.springframework.web" level="TRACE" additivity="false">
+            <AppenderRef ref="App-File-Appender"/>
+            <AppenderRef ref="Console-Appender"/>
+        </Logger>
+        <Logger name="com.provectus.proveng.controller" level="TRACE" additivity="false">
+            <AppenderRef ref="Controller-File-Appender"/>
+            <AppenderRef ref="Console-Appender"/>
+        </Logger>
+        <Logger name="com.provectus.proveng.domain" level="TRACE" additivity="false">
+            <AppenderRef ref="Domain-File-Appender"/>
+            <AppenderRef ref="Console-Appender"/>
+        </Logger>
+        <Logger name="com.provectus.proveng.repository" level="TRACE" additivity="false">
+            <AppenderRef ref="Repository-File-Appender"/>
+            <AppenderRef ref="Console-Appender"/>
+        </Logger>
+        <Logger name="com.provectus.proveng.controller.service" level="TRACE" additivity="false">
+            <AppenderRef ref="Service-File-Appender"/>
+            <AppenderRef ref="Console-Appender"/>
+        </Logger>
+        <Logger name="com.provectus.proveng.utils" level="TRACE" additivity="false">
+            <AppenderRef ref="Utils-File-Appender"/>
+            <AppenderRef ref="Console-Appender"/>
+        </Logger>
+        <Logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+            <AppenderRef ref="SQL-File-Appender"/>
+            <AppenderRef ref="Console-Appender"/>
+        </Logger>
+        <Logger name="org.hibernate.type.descriptor.sql" level="TRACE" additivity="false">
+            <AppenderRef ref="SQL-File-Appender"/>
+            <AppenderRef ref="Console-Appender"/>
+        </Logger>
+        <Root>
+            <AppenderRef ref="App-File-Appender"/>
+        </Root>
+    </Loggers>
+</Configuration>
